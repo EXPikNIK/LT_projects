@@ -1,0 +1,37 @@
+kafka:
+  bootstrap_servers:
+    - "localhost:9092"
+  client_id: "kafka-load-emulator"
+  security_protocol: "PLAINTEXT"
+  sasl:
+    mechanism: ""
+    username: ""
+    password: ""
+
+producer:
+  topic: "load-topic"
+  acks: "1"
+  linger_ms: 5
+  batch_size: 16384
+  compression_type: ""
+  timeout_ms: 30000
+  retries: 3
+
+load:
+  rps: 100
+  duration_sec: 60
+  message_size_bytes: 256
+  key_prefix: "key-"
+  payload_template: "{ts}|{seq}"
+  concurrency: 1
+  max_in_flight: 1000
+  warmup_sec: 0
+  dry_run: false
+
+counters:
+  enabled:
+    - sent
+    - send_errors
+    - acked
+    - throughput_bytes
+  report_interval_sec: 5

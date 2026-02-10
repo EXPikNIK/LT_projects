@@ -1,0 +1,1 @@
+"""Kafka load emulator template."""
